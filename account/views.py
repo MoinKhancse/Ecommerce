@@ -30,7 +30,8 @@ from .mixins import (
 
 
 @method_decorator(never_cache, name='dispatch')
-class Login(LogoutRequiredMixin, generic.View):
+
+class Login(generic.View):
     def get(self, *args, **kwargs):
         form = LoginForm()
         context = {
@@ -65,7 +66,7 @@ class Logout(generic.View):
 
 
 @method_decorator(never_cache, name='dispatch')
-class Registration(LogoutRequiredMixin, generic.CreateView):
+class Registration(generic.CreateView):
     template_name = 'account/registration.html'
     form_class = UserRegistrationForm
     success_url = reverse_lazy('login')

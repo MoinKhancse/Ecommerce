@@ -9,19 +9,19 @@
             <div class="header-right">
                 <img src="{% static 'img/icons/search.png' %}" alt="" class="search-trigger">
                 {% comment %} <img src="{% static 'img/icons/man.png' %}" alt=""> {% endcomment %}
-                <a href="#">
+                <a href="{% url 'cart' %}">
                     <img src="{% static 'img/icons/bag.png' %}" alt="">
-                    <span>2</span>
+                    <span>{{cart|length}}</span>
                 </a>
             </div>
             <div class="user-access">
-                <a href="#">Register</a>
-                <a href="#" class="in">Sign in</a>
+                <a href="{% url 'login' %}"> Register </a>
+                <a href="{% url 'login' %}" class="in">Sign in</a>
             </div>
             <nav class="main-menu mobile-menu">
                 <ul>
                     <li><a class="" href="{% url 'home' %}">Home</a></li>
-                    <li><a class="" href="#">Products</a></li>
+                    <li><a class="" href="{% url 'product-list'%}">Products</a></li>
                     <li><a href="#">Categories</a>
                         <ul class="sub-menu">
                             {% for category in categories %}

@@ -16,7 +16,7 @@
                     <div class="product-slider owl-carousel">
                         <div Style="height:80%;" class="product-img">
                             <figure>
-                                <img Style="height:300px;" src="{{product.thumbnail}}" alt="">
+                                <img Style="height:500px;" src="{{product.thumbnail}}" alt="">
                             </figure>
                         </div>
                     </div>
@@ -42,15 +42,12 @@
                         <p>{{product.description}}</p>
                         <ul class="tags">
                             <li><span>Category :</span> {{product.category.title}}</li>
-                            <li><span>Tags :</span> man, shirt, dotted, elegant, cool</li>
                         </ul>
                         {% if product.in_stock %}
-                        <div class="product-quantity">
-                            <div class="pro-qty">
-                                <input type="text" value="1">
-                            </div>
-                        </div>
-                        <a href="#" class="primary-btn pc-btn">Add to cart</a>
+                        <form action="{% url 'add-to-cart' product.id %}" method="POST">
+                            {% csrf_token %}
+                            <button style="cursor: pointer;" type="submit" class="primary-btn pc-btn">Add to cart</button>
+                        </form>
                         {% endif %}
                     </div>
                 </div>

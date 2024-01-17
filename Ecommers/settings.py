@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Product',
+    'cart',
     'account',
 ]
 
@@ -69,6 +70,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'Product.context_processors.categories',
+                'cart.context_processors.cart',
             ],
         },
     },
@@ -131,3 +133,12 @@ MEDIA_URL= 'Media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL='account.User'
+
+SESSION_COOKIE_AGE=86400
+CART_ID='cart'
+
+AUTHENTICATION_BACKENDS =(
+    'django.contrib.auth.backends.ModelBackend',
+    'account.backends.EmailAuthenticationBackend',
+)
+
